@@ -48,17 +48,18 @@ function setActiveNavLink() {
     }
   }
   
+
   // Initialize the website functionality
   function initWebsite() {
     setActiveNavLink();
     checkDarkMode();
-  
+
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     darkModeToggle.addEventListener('click', toggleDarkMode);
-  
+
     const navToggle = document.querySelector('.nav-toggle');
     navToggle.addEventListener('click', toggleMobileMenu);
-  
+
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
@@ -66,5 +67,5 @@ function setActiveNavLink() {
       });
     });
   }
-  
+
   document.addEventListener('DOMContentLoaded', initWebsite);
