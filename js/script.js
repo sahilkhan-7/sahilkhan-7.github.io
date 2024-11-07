@@ -48,24 +48,56 @@ function setActiveNavLink() {
     }
   }
   
-
-  // Initialize the website functionality
   function initWebsite() {
     setActiveNavLink();
     checkDarkMode();
-
+  
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     darkModeToggle.addEventListener('click', toggleDarkMode);
-
+  
     const navToggle = document.querySelector('.nav-toggle');
     navToggle.addEventListener('click', toggleMobileMenu);
-
+  
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        toggleMobileMenu();
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetId = event.target.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          smoothScroll(targetElement);
+        }
       });
     });
+  }
+  
+  function smoothScroll(target) {
+    const targetPosition = target.offsetTop;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1000; // Adjust the duration as needed (in milliseconds)
+    let start = null;
+  
+    function animation(currentTime) {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      } else {
+        window.scrollTo(0, targetPosition);
+      }
+    }
+  
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+  
+    requestAnimationFrame(animation);
   }
 
   document.addEventListener('DOMContentLoaded', initWebsite);
