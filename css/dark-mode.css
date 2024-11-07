@@ -1,0 +1,67 @@
+/* Dark Mode Styles */
+.dark-mode body {
+    background-color: #222;
+    color: #f5f5f5;
+  }
+  
+  .dark-mode a {
+    color: #f58220;
+  }
+  
+  .dark-mode a:hover {
+    color: #d16b15;
+  }
+  
+  .dark-mode header {
+    background-color: #111;
+  }
+  
+  .dark-mode nav a {
+    color: #f5f5f5;
+  }
+  
+  .dark-mode nav a.active,
+  .dark-mode nav a:hover {
+    color: #f58220;
+  }
+  
+  .dark-mode #hero {
+    background-color: #111;
+  }
+  
+  .dark-mode .skill-bar {
+    background-color: #444;
+  }
+  
+  .dark-mode .project-card {
+    background-color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark-mode #skills {
+    background-color: #333;
+  }
+  
+  .dark-mode .education-item {
+    background-color: #444;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark-mode #contact {
+    background-color: #111;
+  }
+  
+  .dark-mode input,
+  .dark-mode textarea {
+    background-color: #444;
+    color: #f5f5f5;
+  }
+  
+  .dark-mode .submit-button {
+    background-color: #f58220;
+    color: #333;
+  }
+  
+  .dark-mode .submit-button:hover {
+    background-color: #d16b15;
+  }
