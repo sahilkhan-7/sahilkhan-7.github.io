@@ -5,6 +5,12 @@ body {
   padding: 0;
   color: #333;
   background-color: #fff;
+  overflow-y: scroll; /* Ensure scroll functionality remains */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 a {
