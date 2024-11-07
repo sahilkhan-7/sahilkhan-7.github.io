@@ -1,7 +1,7 @@
 // Add active class to the current section in the navigation
 function setActiveNavLink() {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('.nav-menu a');
   
     window.addEventListener('scroll', () => {
       let currentSection = '';
@@ -31,6 +31,15 @@ function setActiveNavLink() {
     localStorage.setItem('darkMode', isDarkMode);
   }
   
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+  
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  }
+  
   // Check if dark mode is enabled from localStorage
   function checkDarkMode() {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -46,6 +55,16 @@ function setActiveNavLink() {
   
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     darkModeToggle.addEventListener('click', toggleDarkMode);
+  
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', toggleMobileMenu);
+  
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
   }
   
   document.addEventListener('DOMContentLoaded', initWebsite);

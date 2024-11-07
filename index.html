@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - [Your Name]</title>
+  <title>Portfolio - Sahil Khan</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/dark-mode.css">
-  
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <div class="nav-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -19,22 +24,264 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+      </div>
     </nav>
   </header>
 
   <main>
     <section id="hero">
-      <div class="hero-content">
-        <h1>Hello, I'm [Your Name]</h1>
-        <h2>Data Scientist & Developer</h2>
-        <a href="#about" class="scroll-indicator">
-          <i class="fas fa-chevron-down"></i>
-        </a>
-      </div>
-      <div class="hero-image">
-        <img src="img/hero-image.jpg" alt="Hero Image">
-      </div>
+      <!-- Hero section content -->
     </section>
+
+    <section id="about">
+        <div class="about-content">
+          <div class="profile-picture">
+            <img src="img/profile-picture.jpg" alt="Profile Picture">
+          </div>
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              [Provide a brief overview or personal statement about yourself, your background, and your mission or goals.]
+            </p>
+            <div class="skills-list">
+              <h3>Skills</h3>
+              <ul>
+                <li>
+                  <span class="skill-name">Python</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                  </div>
+                </li>
+                <li>
+                  <span class="skill-name">Data Analysis</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                  </div>
+                </li>
+                <li>
+                  <span class="skill-name">Machine Learning</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                  </div>
+                </li>
+                <li>
+                  <span class="skill-name">Web Development</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <a href="resume.pdf" class="download-resume">Download Resume</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-thumbnail">
+              <img src="img/project-thumbnails/project1.jpg" alt="Project 1 Thumbnail">
+            </div>
+            <div class="project-details">
+              <h3>Project 1</h3>
+              <p>
+                [Provide a brief description of the project, including the technologies used.]
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+              </div>
+              <a href="#" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-thumbnail">
+              <img src="img/project-thumbnails/project2.jpg" alt="Project 2 Thumbnail">
+            </div>
+            <div class="project-details">
+              <h3>Project 2</h3>
+              <p>
+                [Provide a brief description of the project, including the technologies used.]
+              </p>
+              <div class="project-tags">
+                <span class="tag">Web Development</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="#" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-thumbnail">
+              <img src="img/project-thumbnails/project3.jpg" alt="Project 3 Thumbnail">
+            </div>
+            <div class="project-details">
+              <h3>Project 3</h3>
+              <p>
+                [Provide a brief description of the project, including the technologies used.]
+              </p>
+              <div class="project-tags">
+                <span class="tag">Data Visualization</span>
+                <span class="tag">D3.js</span>
+              </div>
+              <a href="#" class="project-link">View Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-item">
+            <div class="experience-date">
+              <span class="start-date">Jan 2021</span>
+              <span class="end-date">Present</span>
+            </div>
+            <div class="experience-details">
+              <h3>Data Scientist</h3>
+              <h4>ABC Company</h4>
+              <p>
+                [Provide a concise summary of your responsibilities and accomplishments in this role.]
+              </p>
+            </div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-date">
+              <span class="start-date">May 2019</span>
+              <span class="end-date">Dec 2020</span>
+            </div>
+            <div class="experience-details">
+              <h3>Software Engineer Intern</h3>
+              <h4>XYZ Corporation</h4>
+              <p>
+                [Provide a concise summary of your responsibilities and accomplishments in this role.]
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-section">
+          <div class="skills-group">
+            <h3>Programming</h3>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">SQL</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3>Data Analysis</h3>
+            <div class="skill-item">
+              <span class="skill-name">Pandas</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Matplotlib</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Tableau</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3>Machine Learning</h3>
+            <div class="skill-item">
+              <span class="skill-name">Scikit-Learn</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">TensorFlow</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Keras</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-items">
+          <div class="education-item">
+            <h3>Master of Science in Data Science</h3>
+            <h4>University of XYZ</h4>
+            <p>Graduated: May 2021</p>
+          </div>
+          <div class="education-item">
+            <h3>Bachelor of Science in Computer Science</h3>
+            <h4>ABC University</h4>
+            <p>Graduated: May 2019</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+        <div class="social-links">
+            <a href="#" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+    
   </main>
 
   <script src="js/script.js"></script>
