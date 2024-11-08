@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Sahil Khan</title>
+  <title>Sahil Khan - Portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
 </head>
 <body>
   <header>
@@ -33,41 +35,64 @@
   <main>
     <div id="hero" class="section">
       <div class="hero-content">
-        <h1>Welcome to My Portfolio</h1>
-        <h2>Unleashing the Power of Data Science</h2>
+        <h1>Sahil Khan</h1> <!-- Your Name -->
+        <h2 class="typing-animation">Data Scientist</h2> <!-- Dynamic Job Title -->
+        <p class="hero-tagline">Transforming Data into Actionable Insights</p> <!-- Tagline -->
+        <p class="hero-intro">
+          As a passionate Data Scientist with expertise in Machine Learning, Deep Learning, and Data Analysis,
+          I bring data-driven solutions to complex problems. From crafting intelligent algorithms to developing
+          predictive models, I’m dedicated to leveraging data to drive impactful decisions and innovation.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="hire-me-button">Hire Me</a>
+        </div>
         <a href="#about" class="scroll-indicator">
           <i class="fas fa-chevron-down"></i>
         </a>
       </div>
       <div class="hero-image">
-        <img src="img/hero-image.jpg" alt="Hero Image">
+        <img src="img/hero-image.png" alt="Profile Picture">
       </div>
     </div>
+    
 
     <section id="social-links" class="section">
       <div class="social-links-container">
         <h2>Connect with Me</h2>
         <div class="social-links-items">
-          <a href="https://www.linkedin.com/in/programmer70/" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/sahilkhan-7/" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.kaggle.com/sahilkhan70" target="_blank">
-            <i class="fab fa-kaggle"></i>
-          </a>
-          <a href="https://www.instagram.com/programmer.70/" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <div class="social-link-preview">
+            <a href="https://www.linkedin.com/in/programmer70/" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <div class="social-link-preview">
+            <a href="https://github.com/sahilkhan-7/" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <div class="social-link-preview">
+            <a href="https://www.kaggle.com/sahilkhan70" target="_blank" class="social-link">
+              <i class="fab fa-kaggle"></i>
+              <span>Kaggle</span>
+            </a>
+          </div>
+          <div class="social-link-preview">
+            <a href="https://www.instagram.com/programmer.70/" target="_blank" class="social-link">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
+    
 
     <section id="about">
         <div class="about-content">
           <div class="profile-picture">
-            <img src="img/profile-picture.jpg" alt="Profile Picture">
+            <img src="img/profile-picture.png" alt="Profile Picture">
           </div>
           <div class="about-text">
             <h2>About Me</h2>
@@ -149,13 +174,13 @@
               <img src="img/project-thumbnails/project3.jpg" alt="Project 3 Thumbnail">
             </div>
             <div class="project-details">
-              <h3>Project 3</h3>
+              <h3>Stock Price Prediction</h3>
               <p>
                 [Provide a brief description of the project, including the technologies used.]
               </p>
               <div class="project-tags">
-                <span class="tag">Data Visualization</span>
-                <span class="tag">D3.js</span>
+                <span class="tag">Time Series Forcasting</span>
+                <span class="tag">Machine Learning</span>
               </div>
               <a href="#" class="project-link">View Project</a>
             </div>
@@ -205,19 +230,19 @@
             <div class="skill-item">
               <span class="skill-name">Python</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 95%;"></div>
+                <div class="skill-progress" data-skill-level="95%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">MySQL</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
+                <div class="skill-progress" data-skill-level="90%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">DSA</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
+                <div class="skill-progress" data-skill-level="85%"></div>
               </div>
             </div>
           </div>
@@ -226,19 +251,19 @@
             <div class="skill-item">
               <span class="skill-name">Pandas</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%;"></div>
+                <div class="skill-progress" data-skill-level="90%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Matplotlib</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
+                <div class="skill-progress" data-skill-level="90%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Tableau</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 80%;"></div>
+                <div class="skill-progress" data-skill-level="70%"></div>
               </div>
             </div>
           </div>
@@ -247,19 +272,19 @@
             <div class="skill-item">
               <span class="skill-name">Scikit-Learn</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
+                <div class="skill-progress" data-skill-level="90%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">TensorFlow</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 80%;"></div>
+                <div class="skill-progress" data-skill-level="80%"></div>
               </div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Keras</span>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 75%;"></div>
+                <div class="skill-progress" data-skill-level="75%"></div>
               </div>
             </div>
           </div>
@@ -267,22 +292,52 @@
       </section>
 
       <section id="education">
-        <h2>Education</h2>
+        <h2 class="section-title">Education</h2>
         <div class="education-items">
-          <div class="education-item">
-            <h3>Bachelor of Technologies in Computer Science</h3>
-            <h4>Rajasthan Technical University, Kota</h4>
-            <p>Aug 2021 - Present (last year)</p>
-            <p>CGPA : 8.5</p>
+          <!-- Bachelor's Degree -->
+          <div class="education-item" data-aos="fade-up">
+            <div class="education-icon">
+              <img src="path-to-your-icon/bachelor-icon.png" alt="Bachelor Icon">
+            </div>
+            <div class="education-content">
+              <h3>Bachelor of Technology in Computer Science</h3>
+              <h4>Rajasthan Technical University, Kota</h4>
+              <div class="education-details">
+                <p class="education-duration">Aug 2021 - Present (last year)</p>
+                <div class="highlight">CGPA: <span>8.5</span></div>
+              </div>
+              <ul class="education-highlights">
+                <li><i class="fa fa-check-circle"></i> Specialized in Software Development and Machine Learning.</li>
+                <li><i class="fa fa-check-circle"></i> Built multiple projects, including real-time ML models.</li>
+                <li><i class="fa fa-check-circle"></i> Active member of the Computer Science club.</li>
+              </ul>
+            </div>
           </div>
-          <div class="education-item">
-            <h3>Secondary Education (Science & Maths)/h3>
-            <h4>Rajasthan Board of Secodary Education</h4>
-            <p>Completed: May 2021</p>
-            <p>Percentage: 94%</p>
+      
+          <!-- Secondary Education -->
+          <div class="education-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="education-icon">
+              <img src="path-to-your-icon/secondary-icon.png" alt="School Icon">
+            </div>
+            <div class="education-content">
+              <h3>Secondary Education (Science & Maths)</h3>
+              <h4>Rajasthan Board of Secondary Education</h4>
+              <div class="education-details">
+                <p class="education-duration">Completed: May 2021</p>
+                <div class="highlight">Percentage: <span>94%</span></div>
+              </div>
+              <ul class="education-highlights">
+                <li><i class="fa fa-check-circle"></i> Excelled in Mathematics and Science.</li>
+                <li><i class="fa fa-check-circle"></i> Led school’s coding club.</li>
+                <li><i class="fa fa-check-circle"></i> Awarded merit-based scholarship.</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </section>
+      </section>      
+
+      
+
 
       <section id="contact">
         <h2>Get in Touch</h2>
@@ -322,5 +377,6 @@
   </main>
 
   <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

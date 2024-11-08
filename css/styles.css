@@ -5,9 +5,11 @@ body {
   padding: 0;
   color: #333;
   background-color: #fff;
-  overflow-y: scroll; /* Ensure scroll functionality remains */
   scrollbar-width: none; /* Firefox */
+  overflow: hidden;
+  overflow-y: auto;
 }
+
 
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
@@ -98,7 +100,7 @@ header {
 
 /* Hero Section Styles */
 #hero {
-    display: flex;
+  display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
@@ -112,10 +114,13 @@ header {
     max-width: 600px;
     animation: fadeIn 1s ease-in-out;
   }
-  
+
   .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #f58220;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 1s ease-in-out;
   }
   
   .hero-content h2 {
@@ -141,6 +146,66 @@ header {
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
+
+
+
+
+
+
+
+  
+  .hero-content h2.typing-animation {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1.2rem;
+    color: #f58220;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-intro {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .hire-me-button {
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .hire-me-button {
+    background-color: #f58220;
+  }
+  
+  .hire-me-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+
+
+
+
+
+
+
+
 
 /* About Section Styles */
 #about {
@@ -201,15 +266,18 @@ header {
 
 .download-resume {
   display: inline-block;
-  background-color: #f58220;
+  background: linear-gradient(45deg, #f58220, #d16b15);
   color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .download-resume:hover {
-  background-color: #d16b15;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #d16b15, #f58220);
 }
 
 /* Project Section Styles */
@@ -380,7 +448,7 @@ header {
 }
 
 /* Education Section Styles */
-#education {
+/* #education {
   padding: 4rem 2rem;
 }
 
@@ -408,7 +476,133 @@ header {
 .education-item p {
   margin-top: 0.5rem;
   color: #777;
+} */
+
+/* This is new */
+
+/* Education Section Styles */
+#education {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f9f9f9, #e9e9e9);
+  text-align: center;
 }
+
+.section-title {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.education-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.education-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.education-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.education-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  margin-right: 1.5rem;
+}
+
+.education-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.education-content h3 {
+  font-size: 1.4rem;
+  color: #f58220;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.education-content h4 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.education-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.education-duration {
+  font-size: 0.95rem;
+  color: #888;
+  font-style: italic;
+}
+
+.highlight {
+  background-color: #f58220;
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.95rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.highlight span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.education-highlights {
+  margin-top: 1rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.education-highlights li {
+  display: flex;
+  align-items: center;
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: left;
+}
+
+.education-highlights li i {
+  color: #f58220;
+  margin-right: 0.6rem;
+}
+
+/* Animations */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* This is new */
 
 /* Contact Section Styles */
 #contact {
@@ -417,41 +611,38 @@ header {
   color: #fff;
 }
 
-.contact-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
 
 .contact-form .form-group {
   margin-bottom: 1.5rem;
+  text-align: center; /* Center-align the form labels */
 }
 
 .contact-form label {
   display: block;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  text-align: left; /* Aligns the label text to the left within centered container */
+  width: calc(100% - 2rem); /* Matches input width */
+  margin: 0 auto;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
+  width: calc(100% - 2rem); /* Reduce width slightly to add margin on both sides */
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 4px;
   background-color: #fff;
   transition: border-color 0.3s ease-in-out;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #f58220;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
 }
 
 .contact-form .submit-button {
   display: block;
-  width: 100%;
+  width: calc(100% - 2rem); /* Matches input width */
   background-color: #f58220;
   color: #fff;
   padding: 0.75rem 1rem;
@@ -460,10 +651,23 @@ header {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  margin: 0 auto; /* Center-aligns the button */
+  box-sizing: border-box;
 }
 
 .contact-form .submit-button:hover {
   background-color: #d16b15;
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #f58220;
 }
 
 label {
@@ -502,6 +706,8 @@ textarea {
   background-color: #d16b15;
 }
 
+
+
 /* Social Links */
 
 #social-links {
@@ -517,6 +723,7 @@ textarea {
 
 .social-links-items {
   display: flex;
+  gap: 1rem;
   justify-content: center;
   margin-top: 2rem;
 }
@@ -526,11 +733,14 @@ textarea {
   color: #333;
   font-size: 2rem;
   margin: 0 1rem;
+  transition: transform 0.3s, color 0.3s;
 }
 
 .social-links-items a:hover {
+  transform: scale(1.1);
   color: #f58220;
 }
+
 .social-links {
     position: fixed;
     top: 50%;
@@ -553,6 +763,33 @@ textarea {
     margin: 0.5rem 0;
     transition: color 0.3s ease-in-out;
 }
+
+.social-link-preview {
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.social-link-preview:hover {
+  background-color: #f58220;
+  transform: scale(1.05);
+}
+
+.social-link-preview i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.social-link-preview span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 
 /* Dark Mode Styles */
 .dark-mode body {
@@ -658,5 +895,17 @@ textarea {
 
   .skills-section {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  #hero {
+      flex-direction: column-reverse;
+      text-align: center;
+  }
+
+  .hero-content h2 {
+      font-size: 1.8rem;
+      margin-top: 1rem;
   }
 }
