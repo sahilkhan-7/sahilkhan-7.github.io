@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, ExternalLink, Mail, ChevronDown, FileText } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [expandedProject, setExpandedProject] = useState(null);
   const [typingText, setTypingText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
 
@@ -18,7 +19,8 @@ const Portfolio = () => {
     'Data Scientist',
     'ML Engineer',
     'AI Enthusiast',
-    'Data Analyst'
+    'Data Analyst',
+    'Python Developer'
   ];
 
   // Typing animation effect
@@ -45,52 +47,52 @@ const Portfolio = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/SahilKhan",
-      icon: <ExternalLink className="w-6 h-6" />
+      url: "https://github.com/sahilkhan-7",
+      icon: "/images/social/github.svg"
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/SahilKhan",
-      icon: <ExternalLink className="w-6 h-6" />
+      url: "https://linkedin.com/in/programmer70",
+      icon: "/images/social/linkedin.svg"
     },
     {
       name: "Instagram",
-      url: "https://instagram.com/SahilKhan",
-      icon: <ExternalLink className="w-6 h-6" />
+      url: "https://instagram.com/programmer.70",
+      icon: "/images/social/instagram.svg"
     },
     {
       name: "Medium",
-      url: "https://medium.com/@SahilKhan",
-      icon: <ExternalLink className="w-6 h-6" />
+      url: "https://medium.com/@SahilKhan7824",
+      icon: "/images/social/medium.svg"
     },
     {
       name: "Kaggle",
-      url: "https://kaggle.com/SahilKhan",
-      icon: <ExternalLink className="w-6 h-6" />
+      url: "https://kaggle.com/SahilKhan782466",
+      icon: "/images/social/kaggle.svg"
     }
   ];
 
   // Skills grouped by category
   const skillGroups = {
     "Programming Languages": [
-      { name: "Python", proficiency: 95, logo: "/api/placeholder/24/24", color: "bg-blue-500" },
-      { name: "SQL", proficiency: 88, logo: "/api/placeholder/24/24", color: "bg-orange-500" },
-      { name: "C++", proficiency: 82, logo: "/api/placeholder/24/24", color: "bg-red-500" },
-      { name: "HTML/CSS", proficiency: 85, logo: "/api/placeholder/24/24", color: "bg-purple-500" }
+      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "bg-blue-500" },
+      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "bg-orange-500" },
+      { name: "C++", proficiency: 82, logo: "/images/skills/sql.png", color: "bg-red-500" },
+      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/sql.png", color: "bg-purple-500" }
     ],
     "Data Science & ML": [
-      { name: "Statistical Analysis", proficiency: 90, logo: "/api/placeholder/24/24", color: "bg-green-500" },
-      { name: "Machine Learning", proficiency: 92, logo: "/api/placeholder/24/24", color: "bg-blue-500" },
-      { name: "Deep Learning", proficiency: 88, logo: "/api/placeholder/24/24", color: "bg-purple-500" },
-      { name: "Computer Vision", proficiency: 85, logo: "/api/placeholder/24/24", color: "bg-yellow-500" },
-      { name: "NLP", proficiency: 83, logo: "/api/placeholder/24/24", color: "bg-indigo-500" }
+      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "bg-green-500" },
+      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-blue-500" },
+      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "bg-purple-500" },
+      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/ml.png", color: "bg-yellow-500" },
+      { name: "NLP", proficiency: 83, logo: "/images/skills/dl.png", color: "bg-indigo-500" }
     ],
     "Libraries & Frameworks": [
-      { name: "NumPy", proficiency: 90, logo: "/api/placeholder/24/24", color: "bg-blue-500" },
-      { name: "Pandas", proficiency: 92, logo: "/api/placeholder/24/24", color: "bg-green-500" },
-      { name: "Scikit-learn", proficiency: 88, logo: "/api/placeholder/24/24", color: "bg-red-500" },
-      { name: "TensorFlow", proficiency: 85, logo: "/api/placeholder/24/24", color: "bg-yellow-500" },
-      { name: "OpenCV", proficiency: 82, logo: "/api/placeholder/24/24", color: "bg-purple-500" }
+      { name: "NumPy", proficiency: 90, logo: "/images/skills/ml.png", color: "bg-blue-500" },
+      { name: "Pandas", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-green-500" },
+      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/ml.png", color: "bg-red-500" },
+      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/ml.png", color: "bg-yellow-500" },
+      { name: "OpenCV", proficiency: 82, logo: "/images/skills/ml.png", color: "bg-purple-500" }
     ]
   };
 
@@ -101,36 +103,36 @@ const Portfolio = () => {
       title: "AI-Based Accident Damage Detection",
       shortDesc: "Vehicle damage detection system with 94% precision using YOLO model",
       fullDesc: "Achieved a 94% precision score in vehicle damage detection using a YOLO model, trained on over 16,000 images. Designed an automated system for accurate vehicle condition assessment, reducing repair cost estimation errors. Enabled remote damage assessment, expediting insurance claim processing and improving incident investigation efficiency.",
-      image: "/api/placeholder/400/300",
-      github: "https://github.com/SahilKhan/accident-detection",
-      live: "https://demo-accident-detection.com"
+      image: "/images/projects/project2.jpg",
+      github: "https://github.com/sahilkhan-7/accident-damage-detection",
+      live: "#"
     },
     {
       id: 2,
       title: "Personalized Movie Recommendation System",
       shortDesc: "Hybrid recommendation engine combining content-based and collaborative filtering",
       fullDesc: "Built a recommendation engine combining content-based and collaborative filtering to enhance user experience. Improved recommendation accuracy by 12% through hybrid filtering, providing relevant movie suggestions. Leveraged user feedback and matrix factorization to increase personalization.",
-      image: "/api/placeholder/400/300",
-      github: "https://github.com/SahilKhan/movie-recommender",
-      live: "https://movie-recommender-demo.com"
+      image: "/images/projects/project1.jpg",
+      github: "https://github.com/sahilkhan-7/Movie-Recommendation-System",
+      live: "#"
     },
     {
       id: 3,
       title: "Customer Churn Prediction",
       shortDesc: "ML model for telecom customer churn prediction with 85% accuracy",
       fullDesc: "Developed a machine learning model to predict customer churn with 85% accuracy, using Logistic Regression, Random Forest, and XGBoost. Conducted feature engineering and data preprocessing to improve model effectiveness. Evaluated the model with precision, recall, and F1-score, identifying high-risk customers for proactive retention.",
-      image: "/api/placeholder/400/300",
-      github: "https://github.com/SahilKhan/churn-prediction",
-      live: "https://churn-prediction-demo.com"
+      image: "/images/projects/project2.jpg",
+      github: "https://github.com/sahilkhan-7/customer-churn-prediction",
+      live: "#"
     },
     {
       id: 4,
       title: "Financial Data Analysis & Visualization",
       shortDesc: "Comprehensive analysis of stock/cryptocurrency data with technical indicators",
       fullDesc: "Analyzed 5+ years of stock/cryptocurrency data, identifying market trends, price movements, and volatility patterns using technical indicators (e.g., Moving Averages, RSI, MACD). Created a dashboard that visualized price trends and volatility, improving data-driven insights by 30% for investment decisions.",
-      image: "/api/placeholder/400/300",
-      github: "https://github.com/SahilKhan/financial-analysis",
-      live: "https://financial-analysis-demo.com"
+      image: "/images/projects/project3.jpg",
+      github: "https://github.com/sahilkhan-7/accident-damage-detection",
+      live: "#"
     }
   ];
 
@@ -166,9 +168,6 @@ const Portfolio = () => {
     "Achieved top ranks in 10th and 12th-grade exams with distinctions; recognized in local media for academic excellence",
     "Participated in multiple AI and ML hackathons, developing innovative solutions under time constraints, gaining hands-on experience in rapid prototyping"
   ];
-
-
-  // Previous data arrays remain the same...
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -231,7 +230,7 @@ const Portfolio = () => {
                 Get in Touch
               </button>
               <a 
-                href="/path-to-resume.pdf" 
+                href="Sahil Khan 14112024.pdf" 
                 download 
                 className="border border-orange-500 hover:bg-orange-500/10 px-6 py-3 rounded-lg transition-colors flex items-center"
               >
@@ -242,35 +241,10 @@ const Portfolio = () => {
           </div>
           <div className="relative">
             <img 
-              src="/api/placeholder/500/500" 
+              src="/images/profile/hero-image.png" 
               alt="Sahil Khan" 
               className="rounded-full w-3/4 mx-auto"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Social Links Section */}
-      <section id="social-links" className="py-16 px-4 bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Connect With Me</h2>
-          <div className="flex justify-center space-x-8">
-            {socialLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative p-4 bg-gray-900 rounded-lg hover:-translate-y-2 transition-all duration-300"
-              >
-                <div className="transform group-hover:rotate-12 transition-transform duration-300">
-                  {link.icon}
-                </div>
-                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  {link.name}
-                </span>
-              </a>
-            ))}
           </div>
         </div>
       </section>
@@ -306,13 +280,44 @@ const Portfolio = () => {
           </div>
           <div>
             <img 
-              src="/api/placeholder/400/400" 
+              src="/images/profile/profile-picture.png" 
               alt="Sahil Khan Profile" 
               className="rounded-lg shadow-lg"
             />
           </div>
         </div>
       </section>
+      
+      {/* Social Links Section */}
+      <section id="social-links" className="py-16 px-4 bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Connect With Me</h2>
+          <div className="flex justify-center space-x-8">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-4 bg-gray-900 rounded-lg hover:-translate-y-2 transition-all duration-300"
+              >
+                {/* Render logo as an image */}
+                <img
+                  src={link.icon}
+                  alt={`${link.name} logo`}
+                  style={{ width: "24px", height: "24px" }}
+                  className="mx-auto"
+                />
+                {/* Tooltip with name */}
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-400">
+                  {link.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Education Section */}
       <section id="education" className="py-16 px-4">
@@ -484,7 +489,7 @@ const Portfolio = () => {
               <h3 className="text-xl font-bold mb-6">Connect With Me</h3>
               <div className="space-y-4">
                 <a 
-                  href="https://github.com/yourusername" 
+                  href="https://github.com/sahilkhan-7" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-300 hover:text-orange-500 transition-colors"
@@ -492,7 +497,7 @@ const Portfolio = () => {
                   <span>GitHub</span>
                 </a>
                 <a 
-                  href="https://linkedin.com/in/yourusername" 
+                  href="https://linkedin.com/in/programmer70" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-300 hover:text-orange-500 transition-colors"
@@ -500,19 +505,27 @@ const Portfolio = () => {
                   <span>LinkedIn</span>
                 </a>
                 <a 
-                  href="https://twitter.com/yourusername" 
+                  href="https://instagram.com/programmer.70" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-300 hover:text-orange-500 transition-colors"
                 >
-                  <span>Twitter</span>
+                  <span>Instagram</span>
                 </a>
                 <a 
-                  href="mailto:your.email@example.com"
+                  href="https://www.kaggle.com/sahilkhan70" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-gray-300 hover:text-orange-500 transition-colors"
+                >
+                  <span>kaggle</span>
+                </a>
+                <a 
+                  href="mailto:sahilkhan782466@gmail.com"
                   className="flex items-center space-x-3 text-gray-300 hover:text-orange-500 transition-colors"
                 >
                   <Mail size={20} />
-                  <span>your.email@example.com</span>
+                  <span>sahilkhan782466@gmail.com</span>
                 </a>
               </div>
             </div>
