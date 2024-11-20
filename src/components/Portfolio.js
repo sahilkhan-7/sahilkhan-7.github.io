@@ -232,7 +232,9 @@ useEffect(() => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <button onClick={() => handleNavClick('about')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">About</button>
               <button onClick={() => handleNavClick('skills')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Skills</button>
+              <button onClick={() => handleNavClick('experience')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Experience</button>
               <button onClick={() => handleNavClick('projects')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Projects</button>
+              <button onClick={() => handleNavClick('educations')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Education</button>
               <button onClick={() => handleNavClick('contact')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Contact</button>
             </div>
           </div>
