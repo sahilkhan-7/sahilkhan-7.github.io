@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, ExternalLink, Mail, ChevronDown, FileText } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
 
@@ -43,6 +43,31 @@ const Portfolio = () => {
     return () => clearInterval(typingInterval);
   }, [textIndex]);
 
+const [isVisible, setIsVisible] = useState({});
+const sectionRef = useRef(null);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible((prev) => ({
+            ...prev,
+            [entry.target.id]: true,
+          }));
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  const skillElements = document.querySelectorAll('.skill-item');
+  skillElements.forEach((el) => observer.observe(el));
+
+  return () => observer.disconnect();
+}, []);
+
+
   // Social media links with hover animations
   const socialLinks = [
     {
@@ -75,27 +100,27 @@ const Portfolio = () => {
   // Skills grouped by category
   const skillGroups = {
     "Programming Languages": [
-      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "bg-blue-500" },
-      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "bg-orange-500" },
-      { name: "C++", proficiency: 82, logo: "/images/skills/sql.png", color: "bg-red-500" },
-      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/sql.png", color: "bg-purple-500" }
+      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "text-blue-500" },
+      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "text-orange-500" },
+      { name: "C++", proficiency: 82, logo: "/images/skills/sql.png", color: "text-red-500" },
+      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/sql.png", color: "text-purple-500" }
     ],
     "Data Science & ML": [
-      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "bg-green-500" },
-      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-blue-500" },
-      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "bg-purple-500" },
-      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/ml.png", color: "bg-yellow-500" },
-      { name: "NLP", proficiency: 83, logo: "/images/skills/dl.png", color: "bg-indigo-500" }
+      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "text-green-500" },
+      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "text-blue-500" },
+      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "text-purple-500" },
+      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/ml.png", color: "text-yellow-500" },
+      { name: "NLP", proficiency: 83, logo: "/images/skills/dl.png", color: "text-indigo-500" }
     ],
     "Libraries & Frameworks": [
-      { name: "NumPy", proficiency: 90, logo: "/images/skills/ml.png", color: "bg-blue-500" },
-      { name: "Pandas", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-green-500" },
-      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/ml.png", color: "bg-red-500" },
-      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/ml.png", color: "bg-yellow-500" },
-      { name: "OpenCV", proficiency: 82, logo: "/images/skills/ml.png", color: "bg-purple-500" }
+      { name: "NumPy", proficiency: 90, logo: "/images/skills/ml.png", color: "text-blue-500" },
+      { name: "Pandas", proficiency: 92, logo: "/images/skills/ml.png", color: "text-green-500" },
+      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/ml.png", color: "text-red-500" },
+      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/ml.png", color: "text-yellow-500" },
+      { name: "OpenCV", proficiency: 82, logo: "/images/skills/ml.png", color: "text-purple-500" }
     ]
   };
-
+  
 
   const projects = [
     {
@@ -103,7 +128,7 @@ const Portfolio = () => {
       title: "AI-Based Accident Damage Detection",
       shortDesc: "Vehicle damage detection system with 94% precision using YOLO model",
       fullDesc: "Achieved a 94% precision score in vehicle damage detection using a YOLO model, trained on over 16,000 images. Designed an automated system for accurate vehicle condition assessment, reducing repair cost estimation errors. Enabled remote damage assessment, expediting insurance claim processing and improving incident investigation efficiency.",
-      image: "/images/projects/project2.jpg",
+      image: "/images/projects/project1.png",
       github: "https://github.com/sahilkhan-7/accident-damage-detection",
       live: "#"
     },
@@ -112,7 +137,7 @@ const Portfolio = () => {
       title: "Personalized Movie Recommendation System",
       shortDesc: "Hybrid recommendation engine combining content-based and collaborative filtering",
       fullDesc: "Built a recommendation engine combining content-based and collaborative filtering to enhance user experience. Improved recommendation accuracy by 12% through hybrid filtering, providing relevant movie suggestions. Leveraged user feedback and matrix factorization to increase personalization.",
-      image: "/images/projects/project1.jpg",
+      image: "/images/projects/project2.png",
       github: "https://github.com/sahilkhan-7/Movie-Recommendation-System",
       live: "#"
     },
@@ -121,7 +146,7 @@ const Portfolio = () => {
       title: "Customer Churn Prediction",
       shortDesc: "ML model for telecom customer churn prediction with 85% accuracy",
       fullDesc: "Developed a machine learning model to predict customer churn with 85% accuracy, using Logistic Regression, Random Forest, and XGBoost. Conducted feature engineering and data preprocessing to improve model effectiveness. Evaluated the model with precision, recall, and F1-score, identifying high-risk customers for proactive retention.",
-      image: "/images/projects/project2.jpg",
+      image: "/images/projects/project3.png",
       github: "https://github.com/sahilkhan-7/customer-churn-prediction",
       live: "#"
     },
@@ -130,7 +155,7 @@ const Portfolio = () => {
       title: "Financial Data Analysis & Visualization",
       shortDesc: "Comprehensive analysis of stock/cryptocurrency data with technical indicators",
       fullDesc: "Analyzed 5+ years of stock/cryptocurrency data, identifying market trends, price movements, and volatility patterns using technical indicators (e.g., Moving Averages, RSI, MACD). Created a dashboard that visualized price trends and volatility, improving data-driven insights by 30% for investment decisions.",
-      image: "/images/projects/project3.jpg",
+      image: "/images/projects/project4.png",
       github: "https://github.com/sahilkhan-7/accident-damage-detection",
       live: "#"
     }
@@ -183,7 +208,9 @@ const Portfolio = () => {
             <div className="hidden md:flex items-center space-x-8">
               <button onClick={() => handleNavClick('about')} className="hover:text-orange-500 transition-colors">About</button>
               <button onClick={() => handleNavClick('skills')} className="hover:text-orange-500 transition-colors">Skills</button>
+              <button onClick={() => handleNavClick('experience')} className="hover:text-orange-500 transition-colors">Experience</button>
               <button onClick={() => handleNavClick('projects')} className="hover:text-orange-500 transition-colors">Projects</button>
+              <button onClick={() => handleNavClick('education')} className="hover:text-orange-500 transition-colors">Education</button>
               <button onClick={() => handleNavClick('contact')} className="hover:text-orange-500 transition-colors">Contact</button>
             </div>
 
@@ -214,50 +241,55 @@ const Portfolio = () => {
       
       {/* Hero Section */}
       <section id="about" className="pt-20 md:pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Hi, I'm <span className="text-orange-500">Sahil Khan</span>
-            </h1>
-            <div className="text-xl md:text-2xl text-gray-400 mb-8 h-8">
-              {typingText}<span className="animate-pulse">|</span>
+        <div className="max-w-7xl mx-auto">
+          {/* Mobile layout (column) */}
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 items-center">
+            {/* Image appears first on mobile */}
+            <div className="order-1 md:order-2 mb-8 md:mb-0">
+              <img 
+                src="/images/profile/hero-image.png" 
+                alt="Sahil Khan" 
+                className="rounded-full w-3/4 mx-auto"
+              />
             </div>
-            <p className="text-gray-300 mb-8">
-              Passionate about transforming data into actionable insights and building AI solutions that solve real-world problems.
-            </p>
-            <div className="flex space-x-4">
-              <button onClick={() => handleNavClick('contact')} className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg transition-colors">
-                Get in Touch
-              </button>
-              <a 
-                href="Sahil Khan 14112024.pdf" 
-                download 
-                className="border border-orange-500 hover:bg-orange-500/10 px-6 py-3 rounded-lg transition-colors flex items-center"
-              >
-                <FileText className="mr-2" size={20} />
-                Download CV
-              </a>
+            {/* Text content appears second on mobile */}
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Hi, I'm <span className="text-orange-500">Sahil Khan</span>
+              </h1>
+              <div className="text-xl md:text-2xl text-gray-400 mb-8 h-8">
+                {typingText}<span className="animate-pulse">|</span>
+              </div>
+              <p className="text-gray-300 mb-8">
+                Passionate about transforming data into actionable insights and building AI solutions that solve real-world problems.
+              </p>
+              <div className="flex justify-center md:justify-start space-x-4">
+                <button onClick={() => handleNavClick('contact')} 
+                  className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg transition-colors">
+                  Get in Touch
+                </button>
+                <a href="Sahil Khan 14112024.pdf" 
+                  download 
+                  className="border border-orange-500 hover:bg-orange-500/10 px-6 py-3 rounded-lg transition-colors flex items-center">
+                  <FileText className="mr-2" size={20} />
+                  Download CV
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="relative">
-            <img 
-              src="/images/profile/hero-image.png" 
-              alt="Sahil Khan" 
-              className="rounded-full w-3/4 mx-auto"
-            />
           </div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section with updated content and smaller image */}
       <section id="about-me" className="py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-6">About Me</h2>
             <p className="text-gray-300 mb-6">
-              Computer Science student with expertise in Data Science and Machine Learning. Proficient in Python, SQL, and deep
-              learning, with experience in building models and data visualization. Focused on analyzing data and creating insights to
-              solve real-world problems.
+              I am a passionate Data Scientist with a knack for transforming data into actionable insights. My expertise lies in Machine Learning, Deep Learning, NLP, and Data Analysis. I strive to make data-driven solutions accessible and impactful. With a strong foundation in Computer Science, I am proficient in Python, SQL, and various data analysis tools. I have a keen interest in exploring the latest advancements in AI and ML, and I am always eager to learn and apply new techniques.
+            </p>
+            <p className="text-gray-300 mb-6">
+              In my free time, I enjoy contributing to open-source projects and participating in hackathons. I believe in continuous learning and growth, and I am excited to collaborate with like-minded individuals and organizations.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
@@ -280,9 +312,9 @@ const Portfolio = () => {
           </div>
           <div>
             <img 
-              src="/images/profile/profile-picture.png" 
+              src="/images/profile/profile-picture.jpg" 
               alt="Sahil Khan Profile" 
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-2/3 mx-auto" // Reduced size with w-2/3
             />
           </div>
         </div>
@@ -292,21 +324,20 @@ const Portfolio = () => {
       <section id="social-links" className="py-16 px-4 bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Connect With Me</h2>
-          <div className="flex justify-center space-x-8">
+          <div className="flex flex-wrap justify-center gap-4">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-4 bg-gray-900 rounded-lg hover:-translate-y-2 transition-all duration-300"
+                className="group relative p-4 bg-gray-900 rounded-lg hover:-translate-y-2 transition-all duration-300 w-16 h-16 flex items-center justify-center"
               >
                 {/* Render logo as an image */}
                 <img
                   src={link.icon}
                   alt={`${link.name} logo`}
-                  style={{ width: "24px", height: "24px" }}
-                  className="mx-auto"
+                  className="w-8 h-8"
                 />
                 {/* Tooltip with name */}
                 <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-gray-400">
@@ -323,13 +354,25 @@ const Portfolio = () => {
       <section id="education" className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Education</h2>
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 gap-8">
             {education.map((edu, index) => (
               <div key={index} className="bg-gray-800 p-6 rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all">
-                <h3 className="text-xl font-bold text-orange-500">{edu.degree}</h3>
-                <p className="text-lg mb-2">{edu.institution}</p>
-                <p className="text-gray-400">{edu.duration}</p>
-                <p className="text-gray-300 mt-2">{edu.details}</p>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14v7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-orange-500">{edu.degree}</h3>
+                    <p className="text-lg text-gray-300">{edu.institution}</p>
+                  </div>
+                </div>
+                <div className="ml-16">
+                  <p className="text-gray-400">{edu.duration}</p>
+                  <p className="text-gray-300 mt-2">{edu.details}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -337,33 +380,83 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
-          {Object.entries(skillGroups).map(([category, skills]) => (
-            <div key={category} className="mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-orange-500">{category}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {skills.map((skill, index) => (
-                  <div key={index} className="bg-gray-800 p-6 rounded-lg">
-                    <div className="flex items-center mb-4">
-                      <img src={skill.logo} alt={skill.name} className="w-6 h-6 mr-3" />
-                      <span className="font-semibold">{skill.name}</span>
+      <section id="skills" className="py-16 px-4" ref={sectionRef}>
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
+        {Object.entries(skillGroups).map(([category, skills]) => (
+          <div key={category} className="mb-12">
+            <h3 className="text-2xl font-semibold mb-6 text-orange-500">{category}</h3>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              {skills.map((skill, index) => (
+                <div 
+                  key={index} 
+                  id={`skill-${category}-${index}`}
+                  className="skill-item bg-gray-800 p-6 rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all"
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="flex items-center mb-6">
+                      <img src={skill.logo} alt={skill.name} className="w-8 h-8 mr-3" />
+                      <span className="font-semibold text-lg">{skill.name}</span>
                     </div>
-                    <div className="h-4 bg-gray-700 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full ${skill.color} transition-all duration-1000`} 
-                        style={{ width: `${skill.proficiency}%` }}
-                      />
+                    {/* Animated Donut Progress */}
+                    <div className="relative w-32 h-32">
+                      <svg className="w-full h-full transform -rotate-90">
+                        <circle
+                          cx="64"
+                          cy="64"
+                          r="56"
+                          fill="none"
+                          stroke="currentColor"
+                          className="text-gray-700"
+                          strokeWidth="12"
+                        />
+                        <circle
+                          cx="64"
+                          cy="64"
+                          r="56"
+                          fill="none"
+                          stroke="currentColor"
+                          className={`${skill.color.replace('bg-', 'text-')} transition-all duration-1000 ease-out`}
+                          strokeWidth="12"
+                          strokeDasharray={`${isVisible[`skill-${category}-${index}`] ? skill.proficiency * 3.51 : 0} 351`}
+                          strokeLinecap="round"
+                          style={{
+                            transition: 'stroke-dasharray 1.5s ease-out'
+                          }}
+                        />
+                      </svg>
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                        <span className="text-2xl font-bold text-white">
+                          {isVisible[`skill-${category}-${index}`] ? skill.proficiency : 0}%
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-sm text-gray-400 mt-2 block">{skill.proficiency}%</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .skill-item {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+      `}</style>
       </section>
+
 
       {/* Experience Section */}
       <section id="experience" className="py-16 px-4 bg-gray-800">
