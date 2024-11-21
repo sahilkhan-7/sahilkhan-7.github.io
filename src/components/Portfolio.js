@@ -229,7 +229,7 @@ useEffect(() => {
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
       <nav className="fixed w-full bg-gray-900/95 backdrop-blur-sm border-b border-orange-500/20 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <span className="text-2xl font-bold text-orange-500">Sahil Khan</span>
@@ -265,7 +265,7 @@ useEffect(() => {
               <button onClick={() => handleNavClick('skills')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Skills</button>
               <button onClick={() => handleNavClick('experience')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Experience</button>
               <button onClick={() => handleNavClick('projects')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Projects</button>
-              <button onClick={() => handleNavClick('educations')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Education</button>
+              <button onClick={() => handleNavClick('education')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Education</button>
               <button onClick={() => handleNavClick('contact')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Contact</button>
             </div>
           </div>
