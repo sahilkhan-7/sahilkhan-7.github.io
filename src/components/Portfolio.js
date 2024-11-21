@@ -7,6 +7,19 @@ const Portfolio = () => {
   const [expandedProject, setExpandedProject] = useState(null);
   const [typingText, setTypingText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
+  const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+  
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // Navigation handler
   const handleNavClick = (id) => {
@@ -158,6 +171,24 @@ useEffect(() => {
       image: "/images/projects/project4.png",
       github: "https://github.com/sahilkhan-7/accident-damage-detection",
       live: "#"
+    },
+    {
+      id: 5,
+      title: "Customer Churn Prediction",
+      shortDesc: "ML model for telecom customer churn prediction with 85% accuracy",
+      fullDesc: "Developed a machine learning model to predict customer churn with 85% accuracy, using Logistic Regression, Random Forest, and XGBoost. Conducted feature engineering and data preprocessing to improve model effectiveness. Evaluated the model with precision, recall, and F1-score, identifying high-risk customers for proactive retention.",
+      image: "/images/projects/project3.png",
+      github: "https://github.com/sahilkhan-7/customer-churn-prediction",
+      live: "#"
+    },
+    {
+      id: 6,
+      title: "Financial Data Analysis & Visualization",
+      shortDesc: "Comprehensive analysis of stock/cryptocurrency data with technical indicators",
+      fullDesc: "Analyzed 5+ years of stock/cryptocurrency data, identifying market trends, price movements, and volatility patterns using technical indicators (e.g., Moving Averages, RSI, MACD). Created a dashboard that visualized price trends and volatility, improving data-driven insights by 30% for investment decisions.",
+      image: "/images/projects/project4.png",
+      github: "https://github.com/sahilkhan-7/accident-damage-detection",
+      live: "#"
     }
   ];
 
@@ -282,7 +313,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* About Section with updated content and smaller image */}
+      {/* About Section
       <section id="about-me" className="py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
@@ -316,11 +347,55 @@ useEffect(() => {
             <img 
               src="/images/profile/profile-picture.jpg" 
               alt="Sahil Khan Profile" 
-              className="rounded-lg shadow-lg w-2/3 mx-auto" // Reduced size with w-2/3
+              className="rounded-lg shadow-lg w-2/3 mx-auto"
+            />
+          </div>
+        </div>
+      </section> */}
+
+      {/* About Section */}
+      <section id="about-me" className="py-16 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">About Me</h2>
+            <p className="text-gray-300 mb-6">
+              Hello! I'm Sahil Khan, a dedicated Data Scientist passionate about leveraging data to solve real-world challenges. With a solid foundation in Machine Learning, Deep Learning, and Data Analytics, I specialize in creating impactful, data-driven solutions. My expertise includes Python, SQL, and various analytical tools, complemented by strong visualization and storytelling abilities.
+            </p>
+            <p className="text-gray-300 mb-6">
+              I have hands-on experience working on projects ranging from speech emotion recognition to building recommendation systems and conducting advanced regression analyses. My work philosophy revolves around continuous learning, collaboration, and exploring innovative approaches in AI and machine learning.
+            </p>
+            <p className="text-gray-300 mb-6">
+              When I'm not diving into data, you'll find me engaging in open-source contributions, enhancing my skills through hackathons, or sharing insights with the community. I'm always excited to connect and collaborate with professionals who share a passion for making an impact through technology.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <h3 className="font-semibold text-orange-500">Name:</h3>
+                <p>Sahil Khan</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-orange-500">Location:</h3>
+                <p>Jaipur, Rajasthan</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-orange-500">Email:</h3>
+                <p>sahilkhan782466@gmail.com</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-orange-500">Phone:</h3>
+                <p>9785845847</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img 
+              src="/images/profile/profile-picture.jpg" 
+              alt="Sahil Khan Profile" 
+              className="rounded-lg shadow-lg w-2/3 mx-auto"
             />
           </div>
         </div>
       </section>
+
       
       {/* Social Links Section */}
       <section id="social-links" className="py-16 px-4 bg-gray-800">
@@ -485,9 +560,12 @@ useEffect(() => {
       <section id="projects" className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <div key={project.id} className="bg-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {projects.slice(0, showAll ? projects.length : (isMobile ? 4 : projects.length)).map((project, index) => (
+              <div
+                key={project.id}
+                className="bg-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20"
+              >
                 <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
@@ -500,25 +578,69 @@ useEffect(() => {
                       className="text-orange-500 hover:text-orange-400 flex items-center"
                     >
                       {expandedProject === project.id ? "Show less" : "Read more"}
-                      <ChevronDown className={`ml-1 transition-transform ${
-                        expandedProject === project.id ? "rotate-180" : ""
-                      }`} />
+                      <ChevronDown
+                        className={`ml-1 transition-transform ${
+                          expandedProject === project.id ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
+                    
                     <div className="flex space-x-4">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-white hover:text-orange-500">
+                    {/* Code Link */}
+                    <div className="relative group">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-orange-500"
+                      >
                         Code
                       </a>
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-white hover:text-orange-500">
-                        <ExternalLink size={20} />
-                      </a>
+                      {/* Tooltip for Code */}
+                      <div className="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white text-xs py-1 px-2 rounded transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
+                        View on GitHub
+                      </div>
                     </div>
+
+                    {/* Live Link (only for the first two projects) */}
+                    {index < 2 && (
+                      <div className="relative group">
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-orange-500 flex items-center"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                        {/* Tooltip for Live */}
+                        <div className="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white text-xs py-1 px-2 rounded transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
+                          See Live
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          {/* See More Projects Button */}
+          {isMobile && projects.length > 4 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-400 transition"
+              >
+                {showAll ? "Show Less" : "See More Projects"}
+              </button>
+            </div>
+          )}
         </div>
       </section>
+
 
       {/* Achievements Section */}
       <section id="achievements" className="py-16 px-4 bg-gray-800">
