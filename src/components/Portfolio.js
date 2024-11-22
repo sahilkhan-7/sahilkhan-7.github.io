@@ -1,3 +1,4 @@
+import emailjs from 'emailjs-com';
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, ExternalLink, Mail, ChevronDown, FileText } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
@@ -56,29 +57,54 @@ const Portfolio = () => {
     return () => clearInterval(typingInterval);
   }, [textIndex]);
 
-const [isVisible, setIsVisible] = useState({});
-const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState({});
+  const sectionRef = useRef(null);
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsVisible((prev) => ({
-            ...prev,
-            [entry.target.id]: true,
-          }));
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({
+              ...prev,
+              [entry.target.id]: true,
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
   const skillElements = document.querySelectorAll('.skill-item');
   skillElements.forEach((el) => observer.observe(el));
 
   return () => observer.disconnect();
-}, []);
+  }, []);
+
+  // Email form
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        'service_w19m80n', // Replace with your EmailJS service ID (e.g., 'service_xyz123')
+        'template_w0667d4', // Replace with your EmailJS template ID (e.g., 'template_abc456')
+        e.target, // The form element is passed directly
+        'Sr2hI8LgOnzeyUCyj' // Replace with your EmailJS public key (e.g., 'user_789def')
+      )
+      .then(
+        (result) => {
+          alert('Message sent successfully!');
+        },
+        (error) => {
+          alert('Failed to send the message. Please try again later.');
+          console.error(error);
+        }
+      );
+
+      e.target.reset(); // Reset the form fields after submission
+  };
 
 
   // Social media links with hover animations
@@ -664,14 +690,16 @@ useEffect(() => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Form */}
             <div className="bg-gray-900 p-6 rounded-lg">
-              <form className="space-y-4">
+              <form id='contactForm' className="space-y-4" onSubmit={sendEmail}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                   <input
                     type="text"
                     id="name"
+                    name='name'
                     className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div>
@@ -679,17 +707,21 @@ useEffect(() => {
                   <input
                     type="email"
                     id="email"
+                    name='email'
                     className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
                     placeholder="your.email@example.com"
+                    required
                   />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
                   <textarea
                     id="message"
+                    name='message'
                     rows={4}
                     className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
                     placeholder="Your message"
+                    required
                   />
                 </div>
                 <button
