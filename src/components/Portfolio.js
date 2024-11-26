@@ -1,7 +1,6 @@
 import emailjs from 'emailjs-com';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo} from 'react';
 import { Menu, ExternalLink, Mail, ChevronDown, FileText } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,13 +28,13 @@ const Portfolio = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const profiles = [
+  const profiles = useMemo(() => [
     'Data Scientist',
     'ML Engineer',
     'AI Enthusiast',
     'Data Analyst',
     'Python Developer'
-  ];
+  ], []);
 
   // Typing animation effect
   useEffect(() => {
@@ -55,8 +54,9 @@ const Portfolio = () => {
     }, 100);
 
     return () => clearInterval(typingInterval);
-  }, [textIndex]);
+  }, [textIndex, profiles]);
 
+  // Intersection Observer to animate skills
   const [isVisible, setIsVisible] = useState({});
   const sectionRef = useRef(null);
 
@@ -72,15 +72,14 @@ const Portfolio = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
-  const skillElements = document.querySelectorAll('.skill-item');
-  skillElements.forEach((el) => observer.observe(el));
+    const skillElements = document.querySelectorAll(".skill-item");
+    skillElements.forEach((el) => observer.observe(el));
 
-  return () => observer.disconnect();
+    return () => observer.disconnect();
   }, []);
-
   // Email form
 
   const sendEmail = (e) => {
@@ -139,25 +138,32 @@ const Portfolio = () => {
   // Skills grouped by category
   const skillGroups = {
     "Programming Languages": [
-      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "text-blue-500" },
-      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "text-orange-500" },
-      { name: "C++", proficiency: 82, logo: "/images/skills/sql.png", color: "text-red-500" },
-      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/sql.png", color: "text-purple-500" }
+      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "bg-blue-500" },
+      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "bg-orange-500" },
+      { name: "C++", proficiency: 82, logo: "/images/skills/cpp.png", color: "bg-red-500" },
+      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/htmlcss.png", color: "bg-purple-500" },
     ],
     "Data Science & ML": [
-      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "text-green-500" },
-      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "text-blue-500" },
-      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "text-purple-500" },
-      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/ml.png", color: "text-yellow-500" },
-      { name: "NLP", proficiency: 83, logo: "/images/skills/dl.png", color: "text-indigo-500" }
+      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "bg-green-500" },
+      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-blue-500" },
+      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "bg-purple-500" },
+      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/cv.png", color: "bg-yellow-500" },
+      { name: "NLP", proficiency: 83, logo: "/images/skills/nlp.png", color: "bg-indigo-500" },
     ],
     "Libraries & Frameworks": [
-      { name: "NumPy", proficiency: 90, logo: "/images/skills/ml.png", color: "text-blue-500" },
-      { name: "Pandas", proficiency: 92, logo: "/images/skills/ml.png", color: "text-green-500" },
-      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/ml.png", color: "text-red-500" },
-      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/ml.png", color: "text-yellow-500" },
-      { name: "OpenCV", proficiency: 82, logo: "/images/skills/ml.png", color: "text-purple-500" }
-    ]
+      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/tf.png", color: "bg-yellow-500" },
+      { name: "Keras", proficiency: 82, logo: "/images/skills/keras.png", color: "bg-purple-500" },
+      { name: "OpenCV", proficiency: 82, logo: "/images/skills/opencv.png", color: "bg-green-500" },
+      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/sklearn.png", color: "bg-red-500" },
+      { name: "Pandas", proficiency: 92, logo: "/images/skills/pandas.png", color: "bg-green-500" },
+      { name: "NumPy", proficiency: 90, logo: "/images/skills/numpy.png", color: "bg-blue-500" },
+    ],
+    "Development": [
+      { name: "Flask", proficiency: 85, logo: "/images/skills/flask.png", color: "bg-yellow-500" },
+      { name: "Github", proficiency: 82, logo: "/images/skills/github.png", color: "bg-purple-500" },
+      { name: "Git", proficiency: 82, logo: "/images/skills/git.png", color: "bg-orange-500" },
+      { name: "Streamlit", proficiency: 88, logo: "/images/skills/streamlit.png", color: "bg-red-500" }
+    ],
   };
   
 
@@ -482,7 +488,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills Section
       <section id="skills" className="py-16 px-4" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
@@ -501,7 +507,7 @@ const Portfolio = () => {
                       <img src={skill.logo} alt={skill.name} className="w-8 h-8 mr-3" />
                       <span className="font-semibold text-lg">{skill.name}</span>
                     </div>
-                    {/* Animated Donut Progress */}
+                    
                     <div className="relative w-32 h-32">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
@@ -558,6 +564,50 @@ const Portfolio = () => {
           animation: fadeIn 0.6s ease-out forwards;
         }
       `}</style>
+      </section> */}
+
+      {/* Skill section with progress bar animation */}
+      <section id="skills" className="py-16 px-4" ref={sectionRef}>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
+          <div className="flex flex-col lg:flex-row gap-6">
+            {Object.entries(skillGroups).map(([category, skills]) => (
+              <div
+                key={category}
+                className="flex-1 bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-orange-500/20 transition-all"
+              >
+                <h3 className="text-2xl font-semibold mb-4 text-orange-500 text-center">{category}</h3>
+                <div className="space-y-6">
+                  {skills.map((skill, index) => {
+                    const skillId = `skill-${category}-${index}`;
+                    return (
+                      <div key={index} id={skillId} className="skill-item space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <img src={skill.logo} alt={skill.name} className="w-8 h-8 mr-4" />
+                            <span className="font-medium text-lg text-white">{skill.name}</span>
+                          </div>
+                          <span className="text-sm text-white font-semibold">
+                            {isVisible[skillId] ? `${skill.proficiency}%` : "0%"}
+                          </span>
+                        </div>
+                        <div className="w-full h-4 bg-gray-700 rounded-lg overflow-hidden">
+                          <div
+                            className={`${skill.color} h-full`}
+                            style={{
+                              width: `${isVisible[skillId] ? skill.proficiency : 0}%`,
+                              transition: "width 1.5s ease-out",
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
 
