@@ -138,33 +138,33 @@ const Portfolio = () => {
   // Skills grouped by category
   const skillGroups = {
     "Programming Languages": [
-      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "bg-blue-500" },
-      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "bg-orange-500" },
-      { name: "C++", proficiency: 82, logo: "/images/skills/cpp.png", color: "bg-red-500" },
-      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/htmlcss.png", color: "bg-purple-500" },
+      { name: "Python", proficiency: 95, logo: "/images/skills/python.png", color: "bg-yellow-400" },
+      { name: "SQL", proficiency: 88, logo: "/images/skills/sql.png", color: "bg-blue-500" },
+      { name: "C++", proficiency: 82, logo: "/images/skills/cpp.png", color: "bg-emerald-500" },
+      { name: "HTML/CSS", proficiency: 85, logo: "/images/skills/htmlcss.png", color: "bg-pink-500" },
     ],
     "Data Science & ML": [
-      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "bg-green-500" },
-      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-blue-500" },
-      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "bg-purple-500" },
-      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/cv.png", color: "bg-yellow-500" },
-      { name: "NLP", proficiency: 83, logo: "/images/skills/nlp.png", color: "bg-indigo-500" },
+      { name: "Statistical Analysis", proficiency: 90, logo: "/images/skills/statistics.png", color: "bg-teal-500" },
+      { name: "Machine Learning", proficiency: 92, logo: "/images/skills/ml.png", color: "bg-indigo-500" },
+      { name: "Deep Learning", proficiency: 88, logo: "/images/skills/dl.png", color: "bg-yellow-400" },
+      { name: "Computer Vision", proficiency: 85, logo: "/images/skills/cv.png", color: "bg-blue-500" },
+      { name: "NLP", proficiency: 83, logo: "/images/skills/nlp.png", color: "bg-green-500" },
     ],
     "Libraries & Frameworks": [
-      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/tf.png", color: "bg-yellow-500" },
-      { name: "Keras", proficiency: 82, logo: "/images/skills/keras.png", color: "bg-purple-500" },
-      { name: "OpenCV", proficiency: 82, logo: "/images/skills/opencv.png", color: "bg-green-500" },
-      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/sklearn.png", color: "bg-red-500" },
-      { name: "Pandas", proficiency: 92, logo: "/images/skills/pandas.png", color: "bg-green-500" },
-      { name: "NumPy", proficiency: 90, logo: "/images/skills/numpy.png", color: "bg-blue-500" },
+      { name: "TensorFlow", proficiency: 85, logo: "/images/skills/tf.png", color: "bg-orange-600" },
+      { name: "Keras", proficiency: 82, logo: "/images/skills/keras.png", color: "bg-red-600" },
+      { name: "OpenCV", proficiency: 82, logo: "/images/skills/opencv.png", color: "bg-green-400" },
+      { name: "Scikit-learn", proficiency: 88, logo: "/images/skills/sklearn.png", color: "bg-orange-400" },
+      { name: "Pandas", proficiency: 92, logo: "/images/skills/pandas.png", color: "bg-blue-800" },
+      { name: "NumPy", proficiency: 90, logo: "/images/skills/numpy.png", color: "bg-blue-400" },
     ],
     "Development": [
-      { name: "Flask", proficiency: 85, logo: "/images/skills/flask.png", color: "bg-yellow-500" },
-      { name: "Github", proficiency: 82, logo: "/images/skills/github.png", color: "bg-purple-500" },
-      { name: "Git", proficiency: 82, logo: "/images/skills/git.png", color: "bg-orange-500" },
-      { name: "Streamlit", proficiency: 88, logo: "/images/skills/streamlit.png", color: "bg-red-500" }
+      { name: "Flask", proficiency: 85, logo: "/images/skills/flask.png", color: "bg-cyan-500" },
+      { name: "GitHub", proficiency: 82, logo: "/images/skills/github.png", color: "bg-violet-500" },
+      { name: "Git", proficiency: 82, logo: "/images/skills/git.png", color: "bg-orange-600" },
+      { name: "Streamlit", proficiency: 88, logo: "/images/skills/streamlit.png", color: "bg-red-500" },
     ],
-  };
+  };  
   
 
   const projects = [
@@ -273,7 +273,7 @@ const Portfolio = () => {
               <button onClick={() => handleNavClick('skills')} className="hover:text-orange-500 transition-colors">Skills</button>
               <button onClick={() => handleNavClick('experience')} className="hover:text-orange-500 transition-colors">Experience</button>
               <button onClick={() => handleNavClick('projects')} className="hover:text-orange-500 transition-colors">Projects</button>
-              <button onClick={() => handleNavClick('education')} className="hover:text-orange-500 transition-colors">Education</button>
+              <button onClick={() => handleNavClick('services')} className="hover:text-orange-500 transition-colors">Services</button>
               <button onClick={() => handleNavClick('contact')} className="hover:text-orange-500 transition-colors">Contact</button>
             </div>
 
@@ -297,7 +297,7 @@ const Portfolio = () => {
               <button onClick={() => handleNavClick('skills')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Skills</button>
               <button onClick={() => handleNavClick('experience')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Experience</button>
               <button onClick={() => handleNavClick('projects')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Projects</button>
-              <button onClick={() => handleNavClick('education')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Education</button>
+              <button onClick={() => handleNavClick('services')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Services</button>
               <button onClick={() => handleNavClick('contact')} className="block w-full text-left px-3 py-2 hover:bg-gray-700">Contact</button>
             </div>
           </div>
@@ -345,49 +345,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* About Section
-      <section id="about-me" className="py-16 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-6">About Me</h2>
-            <p className="text-gray-300 mb-6">
-              I am a passionate Data Scientist with a knack for transforming data into actionable insights. My expertise lies in Machine Learning, Deep Learning, NLP, and Data Analysis. I strive to make data-driven solutions accessible and impactful. With a strong foundation in Computer Science, I am proficient in Python, SQL, and various data analysis tools. I have a keen interest in exploring the latest advancements in AI and ML, and I am always eager to learn and apply new techniques.
-            </p>
-            <p className="text-gray-300 mb-6">
-              In my free time, I enjoy contributing to open-source projects and participating in hackathons. I believe in continuous learning and growth, and I am excited to collaborate with like-minded individuals and organizations.
-            </p>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <h3 className="font-semibold text-orange-500">Name:</h3>
-                <p>Sahil Khan</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Location:</h3>
-                <p>Jaipur, Rajasthan</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Email:</h3>
-                <p>sahilkhan782466@gmail.com</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Phone:</h3>
-                <p>9785845847</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <img 
-              src="/images/profile/profile-picture.jpg" 
-              alt="Sahil Khan Profile" 
-              className="rounded-lg shadow-lg w-2/3 mx-auto"
-            />
-          </div>
-        </div>
-      </section> */}
-
       {/* About Section */}
       <section id="about-me" className="py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* About Text */}
           <div>
             <h2 className="text-3xl font-bold mb-6">About Me</h2>
             <p className="text-gray-300 mb-6">
@@ -399,29 +360,35 @@ const Portfolio = () => {
             <p className="text-gray-300 mb-6">
               When I'm not diving into data, you'll find me engaging in open-source contributions, enhancing my skills through hackathons, or sharing insights with the community. I'm always excited to connect and collaborate with professionals who share a passion for making an impact through technology.
             </p>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <h3 className="font-semibold text-orange-500">Name:</h3>
-                <p>Sahil Khan</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Location:</h3>
-                <p>Jaipur, Rajasthan</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Email:</h3>
-                <p>sahilkhan782466@gmail.com</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-orange-500">Phone:</h3>
-                <p>9785845847</p>
+
+            {/* Contact Information */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="font-semibold text-orange-500">Name:</h3>
+                  <p className="text-gray-300">Sahil Khan</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-orange-500">Location:</h3>
+                  <p className="text-gray-300">Jaipur, Rajasthan</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-orange-500">Email:</h3>
+                  <p className="text-gray-300 break-all">sahilkhan782466@gmail.com</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-orange-500">Phone:</h3>
+                  <p className="text-gray-300">9785845847</p>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Profile Picture */}
           <div>
-            <img 
-              src="/images/profile/profile-picture.jpg" 
-              alt="Sahil Khan Profile" 
+            <img
+              src="/images/profile/profile-picture.jpg"
+              alt="Sahil Khan Profile"
               className="rounded-lg shadow-lg w-2/3 mx-auto"
             />
           </div>
@@ -488,89 +455,13 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills Section
-      <section id="skills" className="py-16 px-4" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
-        {Object.entries(skillGroups).map(([category, skills]) => (
-          <div key={category} className="mb-12">
-            <h3 className="text-2xl font-semibold mb-6 text-orange-500">{category}</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              {skills.map((skill, index) => (
-                <div 
-                  key={index} 
-                  id={`skill-${category}-${index}`}
-                  className="skill-item bg-gray-800 p-6 rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="flex items-center mb-6">
-                      <img src={skill.logo} alt={skill.name} className="w-8 h-8 mr-3" />
-                      <span className="font-semibold text-lg">{skill.name}</span>
-                    </div>
-                    
-                    <div className="relative w-32 h-32">
-                      <svg className="w-full h-full transform -rotate-90">
-                        <circle
-                          cx="64"
-                          cy="64"
-                          r="56"
-                          fill="none"
-                          stroke="currentColor"
-                          className="text-gray-700"
-                          strokeWidth="12"
-                        />
-                        <circle
-                          cx="64"
-                          cy="64"
-                          r="56"
-                          fill="none"
-                          stroke="currentColor"
-                          className={`${skill.color.replace('bg-', 'text-')} transition-all duration-1000 ease-out`}
-                          strokeWidth="12"
-                          strokeDasharray={`${isVisible[`skill-${category}-${index}`] ? skill.proficiency * 3.51 : 0} 351`}
-                          strokeLinecap="round"
-                          style={{
-                            transition: 'stroke-dasharray 1.5s ease-out'
-                          }}
-                        />
-                      </svg>
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                        <span className="text-2xl font-bold text-white">
-                          {isVisible[`skill-${category}-${index}`] ? skill.proficiency : 0}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .skill-item {
-          animation: fadeIn 0.6s ease-out forwards;
-        }
-      `}</style>
-      </section> */}
-
+      {/* Skills Section */}
       {/* Skill section with progress bar animation */}
       <section id="skills" className="py-16 px-4" ref={sectionRef}>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
-          <div className="flex flex-col lg:flex-row gap-6">
+          {/* Responsive grid layout for skill groups */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {Object.entries(skillGroups).map(([category, skills]) => (
               <div
                 key={category}
@@ -696,8 +587,6 @@ const Portfolio = () => {
                       </div>
                     )}
                   </div>
-
-
                   </div>
                 </div>
               </div>
@@ -731,6 +620,47 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 px-4 bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Data Analysis & Visualization",
+                description: "Transform raw data into actionable insights with tailored dashboards and reports."
+              },
+              {
+                title: "Machine Learning Models",
+                description: "Design, train, and deploy predictive models to solve real-world problems."
+              },
+              {
+                title: "Deep Learning Solutions",
+                description: "Create AI models for tasks like computer vision, NLP, and speech recognition."
+              },
+              {
+                title: "ETL Pipelines",
+                description: "Build robust pipelines for data extraction, transformation, and loading."
+              },
+              {
+                title: "Custom AI Applications",
+                description: "Develop end-to-end AI applications tailored to your needs."
+              },
+              {
+                title: "Consulting & Workshops",
+                description: "Provide hands-on training and strategic guidance in AI and data science."
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-gray-900 p-6 rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all">
+                <h3 className="text-xl font-bold text-orange-500 mb-4">{service.title}</h3>
+                <p className="text-gray-300">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Contact Section */}
       <section id="contact" className="py-16 px-4 bg-gray-800">
