@@ -6,3 +6,24 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* Make sure the navbar is responsive */
+@media (max-width: 768px) {
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+      padding: 10px;
+      z-index: 1000;
+    }
+  }
+  
+
+@media (max-width: 768px) {
+    .mobile-nav {
+      min-height: 60px; 
+    }
+  }
+  

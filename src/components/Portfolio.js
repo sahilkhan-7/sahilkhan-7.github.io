@@ -1,7 +1,7 @@
 import emailjs from 'emailjs-com';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, ExternalLink, Mail, ChevronDown, FileText, Triangle} from 'lucide-react';
+import { Menu, ExternalLink, Mail, ChevronDown, FileText, Triangle, Github, Instagram, Linkedin} from 'lucide-react';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -139,6 +139,33 @@ const Portfolio = () => {
     );
   };
 
+  useEffect(() => {
+    document.body.style.overflowX = 'hidden'; // Disable horizontal scrolling
+    return () => {
+        document.body.style.overflowX = ''; // Cleanup on unmount
+    };
+  }, []);
+
+
+
+  useEffect(() => {
+    const debounce = (func, wait) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), wait);
+      };
+    };
+  
+    const handleResize = debounce(() => {
+      setIsMobile(window.innerWidth <= 768);
+    }, 300);
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  
   // Social media links with hover animations
   const socialLinks = [
     {
@@ -301,10 +328,10 @@ const Portfolio = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 120 }}
-        className="fixed w-full bg-gray-900/80 backdrop-blur-xl border-b border-orange-500/20 z-50 shadow-lg"
+        className="fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-xl border-b border-orange-500/20 z-50 shadow-lg"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-between h-14 items-center">
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
@@ -338,7 +365,7 @@ const Portfolio = () => {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-orange-500"
+                className="text-white hover:text-orange-500 relative z-50"
               >
                 <Menu size={24} />
               </motion.button>
@@ -354,7 +381,7 @@ const Portfolio = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ type:'spring', stiffness: 200 }}
-              className="md:hidden"
+              className="md:hidden fixed top-0 left-0 w-full bg-gray-800/95 z-40 overflow-hidden"
             >
               <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-800/95">
                 {['about', 'skills', 'experience', 'projects', 'services', 'contact'].map((section) => (
@@ -380,7 +407,7 @@ const Portfolio = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="pt-32 md:pt-45 pb-16 px-4 relative overflow-hidden"
+        className="min-h-screen pt-32 md:pt-45 pb-16 px-4 relative overflow-hidden"
       >
         <div className="absolute inset-2 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -436,10 +463,19 @@ const Portfolio = () => {
                 <img 
                   src="/images/profile/hero-image.png" 
                   alt="Sahil Khan" 
-                  className="rounded-full w-75 md:w-[30rem] shadow-2xl border-4 border-orange-500/30 transform hover:scale-105 transition-transform duration-300"
+                  className="rounded-full w-80 md:w-[30rem] shadow-2xl border-4 border-orange-500/30 transform hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute -top-10 -right-10 animate-bounce">
                   <Triangle className="text-orange-500" size={40} />
+                </div>
+                <div className="absolute -top-10 -left-10 animate-bounce">
+                  <Github className="text-orange-500" size={40} />
+                </div>
+                <div className="absolute top-50 -left-10 animate-bounce">
+                  <Instagram className="text-orange-500" size={40} />
+                </div>
+                <div className="absolute top-50 -right-10 animate-bounce">
+                  <Linkedin className="text-orange-500" size={40} />
                 </div>
               </div>
             </motion.div>
