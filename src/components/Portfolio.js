@@ -765,122 +765,125 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                className="card"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                style={{
-                  boxSizing: "border-box",
-                  width: "100%",
-                  height: "auto",
-                  background: "rgba(30, 25, 50, 0.25)", // Dark background for better contrast
-                  border: "1px solid white",
-                  boxShadow: "12px 17px 51px rgba(0, 0, 0, 0.22)",
-                  borderRadius: "17px",
-                  textAlign: "center",
-                  cursor: "pointer",
-                  transition: "all 0.5s",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  overflow: "hidden", // Prevents shifting
-                  color: "white",
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  borderColor: "orange",
-                }}
-                whileTap={{
-                  scale: 0.95,
-                  rotateZ: 1.7,
-                }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
+            {projects
+              .slice(0, isMobile ? (showAll ? projects.length : 4) : (showAll ? projects.length : 6))
+              .map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  className="card"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
                   style={{
+                    boxSizing: "border-box",
                     width: "100%",
-                    height: "12rem",
-                    objectFit: "cover",
-                    borderRadius: "17px 17px 0 0",
+                    height: "auto",
+                    background: "rgba(30, 25, 50, 0.25)", // Dark background for better contrast
+                    border: "1px solid white",
+                    boxShadow: "12px 17px 51px rgba(0, 0, 0, 0.22)",
+                    borderRadius: "17px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    transition: "all 0.1s ease-in-out",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    overflow: "hidden", // Prevents shifting
+                    color: "white",
                   }}
-                />
-                <div style={{ padding: "1.5rem", minHeight: "12rem" }}>
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p
-                    className="text-gray-400 mb-4"
+                  whileHover={{
+                    scale: 1.05,
+                    borderColor: "orange",
+                    transition: { duration: 0.1, ease: "easeInOut" }, // Faster hover effect
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    rotateZ: 1.7,
+                  }}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     style={{
-                      height: expandedProjects.includes(project.id) ? "auto" : "3rem", // Fixed height for collapsed state
-                      overflow: expandedProjects.includes(project.id)
-                        ? "visible"
-                        : "hidden", // Prevents content overflow
-                      textOverflow: "ellipsis", // Adds "..." for clipped text
-                      whiteSpace: "normal", // Multiline support
-                      transition: "height 0.1s",
+                      width: "100%",
+                      height: "12rem",
+                      objectFit: "cover",
+                      borderRadius: "17px 17px 0 0",
                     }}
-                  >
-                    {expandedProjects.includes(project.id)
-                      ? project.fullDesc
-                      : project.shortDesc}
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <button
-                      onClick={() => toggleExpandedProject(project.id)}
-                      className="text-orange-500 hover:text-orange-400 flex items-center"
+                  />
+                  <div style={{ padding: "1.5rem", minHeight: "12rem" }}>
+                    <h3 className="text-xl font-bold text-orange-500 mb-4">{project.title}</h3>
+                    <p
+                      className="text-gray-400 mb-4"
+                      style={{
+                        height: expandedProjects.includes(project.id) ? "auto" : "3rem", // Fixed height for collapsed state
+                        overflow: expandedProjects.includes(project.id)
+                          ? "visible"
+                          : "hidden", 
+                        textOverflow: "ellipsis",
+                        whiteSpace: "normal", 
+                        transition: "height 0.1s",
+                      }}
                     >
-                      {expandedProjects.includes(project.id) ? "Show less" : "Read more"}
-                      <ChevronDown
-                        className={`ml-1 transition-transform ${
-                          expandedProjects.includes(project.id) ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+                      {expandedProjects.includes(project.id)
+                        ? project.fullDesc
+                        : project.shortDesc}
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <button
+                        onClick={() => toggleExpandedProject(project.id)}
+                        className="text-orange-500 hover:text-orange-400 flex items-center"
+                      >
+                        {expandedProjects.includes(project.id) ? "Show less" : "Read more"}
+                        <ChevronDown
+                          className={`ml-1 transition-transform ${
+                            expandedProjects.includes(project.id) ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
 
-                    <div className="flex space-x-4">
-                      {/* Code Link */}
-                      <div className="relative group">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-orange-500 hover:text-orange-400"
-                        >
-                          Code
-                        </a>
-                        <div className="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white text-xs py-1 px-2 rounded transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
-                          View on GitHub
-                        </div>
-                      </div>
-
-                      {/* Live Link (only for the first two projects) */}
-                      {index < 2 && (
+                      <div className="flex space-x-4">
+                        {/* Code Link */}
                         <div className="relative group">
                           <a
-                            href={project.live}
+                            href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-orange-500 hover:text-orange-400 flex items-center"
+                            className="text-orange-500 hover:text-orange-400"
                           >
-                            <ExternalLink size={20} />
+                            Code
                           </a>
                           <div className="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white text-xs py-1 px-2 rounded transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
-                            See Live
+                            View on GitHub
                           </div>
                         </div>
-                      )}
+
+                        {/* Live Link (only for the first two projects) */}
+                        {index < 2 && (
+                          <div className="relative group">
+                            <a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-orange-500 hover:text-orange-400 flex items-center"
+                            >
+                              <ExternalLink size={20} />
+                            </a>
+                            <div className="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-black text-white text-xs py-1 px-2 rounded transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
+                              See Live
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
           </div>
 
           {/* Show More Projects Button */}
-          {isMobile && projects.length > 4 && (
+          {((isMobile && projects.length > 4) || (!isMobile && projects.length > 6)) && (
             <div className="text-center mt-8">
               <button
                 onClick={() => setShowAll(!showAll)}
@@ -892,6 +895,7 @@ const Portfolio = () => {
           )}
         </div>
       </section>
+
 
       {/* Achievements Section */}
       <section id="achievements" className="py-16 px-4 bg-gray-800">
