@@ -27,3 +27,26 @@
     }
   }
   
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    33% {
+      transform: translateY(-10px) translateX(10px);
+    }
+    66% {
+      transform: translateY(10px) translateX(-10px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.05;
+    }
+    50% {
+      opacity: 0.1;
+    }
+  }  
