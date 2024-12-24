@@ -106,7 +106,7 @@ const HeroSection = ({ handleNavClick }) => {
               Get in Touch
             </button>
             <a
-              href="/Sahil Khan 14112024.pdf"
+              href="/Sahil Khan 10122024.pdf"
               download
               className="px-8 py-4 border border-orange-500 rounded-lg font-medium
                           hover:bg-orange-500/10 transform hover:scale-105 transition-all 
