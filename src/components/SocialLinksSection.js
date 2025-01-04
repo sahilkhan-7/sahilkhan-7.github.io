@@ -23,7 +23,7 @@ const SocialLinksSection = () => {
     },
     {
       name: "Medium",
-      url: "https://medium.com/@SahilKhan7824",
+      url: "https://medium.com/@sahilkhan782466",
       Icon: BookOpen,
       color: "hover:bg-green-600"
     },
