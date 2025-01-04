@@ -6,8 +6,8 @@ const Header = ({ handleNavClick, activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = (section) => {
-    handleNavClick(section); // Navigate to the section
-    setIsMenuOpen(false); // Close the menu
+    handleNavClick(section);
+    setIsMenuOpen(false);
   };
 
   return (

@@ -241,10 +241,9 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <Header handleNavClick={handleNavClick} />
+      <Header handleNavClick={handleNavClick} activeSection={activeSection} />
       
       <main>
-
           <HeroSection handleNavClick={handleNavClick} />
 
           <AboutSection />
@@ -253,20 +252,19 @@ const Portfolio = () => {
 
           <EducationSection education={education} />
 
-          <SkillsSection skillGroups={skillGroups}/>
+          <SkillsSection skillGroups={skillGroups} />
 
           <ExperiencesSection experience={experience} />
 
           <ProjectsSection isMobile={isMobile} />
       
-          <AchievementsSection achievements = {achievements}/>
+          <AchievementsSection achievements={achievements} />
 
           <ServicesSection />
 
           <ContactSection sendEmail={sendEmail} socialLinks={socialLinks} />
           
-          <Footer/>
-          
+          <Footer />
       </main>
     </div>
   );

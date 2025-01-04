@@ -29,7 +29,7 @@ const HeroSection = ({ handleNavClick }) => {
 
   const handleResumeDownload = () => {
     // Create a direct link to the resume file in the public directory
-    const resumeUrl = `${process.env.PUBLIC_URL}/Sahil Khan 10122024.pdf`;
+    const resumeUrl = `${process.env.PUBLIC_URL}/Sahil Khan Resume.pdf`;
     
     // Create a temporary anchor element
     const link = document.createElement('a');
