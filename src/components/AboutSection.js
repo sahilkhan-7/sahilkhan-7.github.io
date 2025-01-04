@@ -80,7 +80,7 @@ const AboutSection = () => {
                   { label: 'Location', value: 'Jaipur, Rajasthan' },
                   { label: 'Email', value: 'sahilkhan782466@gmail.com' },
                   { label: 'Phone', value: '+91 9785845847' },
-                  { label: 'Available', value: 'For Freelance' }
+                  { label: 'Available', value: 'For Part-Time, Full-Time, Contract' }
                 ].map((info, index) => (
                   <div key={index} className="space-y-1">
                     <p className="text-sm font-semibold text-orange-500">{info.label}:</p>
